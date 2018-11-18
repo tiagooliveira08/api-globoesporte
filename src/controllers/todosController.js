@@ -1,10 +1,27 @@
 
+const mongoose = require("mongoose");
 
-exports.todos_all_get = function(req, res) {
+require("./../models/todosModel");
 
-	res.send("pegar todos os todos");
+const Todos = mongoose.model("Todos");
+
+exports.index =  async function(req, res) {
+		
+	let todos = await Todos.find({});
+
+	res.json(todos);
 }
 
-exports.todos_add_post = function(req, res) { 
-	res.send("adicionar todo");
+exports.store =  async function(req, res) { 
+	
+	let todos = await Todos.create(req.body);
+
+	res.json(todos);
+}
+
+exports.destroy = async (req, res) => {
+
+	const todos = await Todos.findOneAndDelete(req.params.id);
+
+	res.send("excluido"); 
 }

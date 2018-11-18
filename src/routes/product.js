@@ -3,12 +3,12 @@ const routes = express.Router();
 
 const productController = require("./../controllers/productController");
 
-routes.get("/show", productController.product_all_show_get);
-routes.get("/delete", productController.product_delete);
+routes.get("/index", productController.index);
+routes.get("/destroy", productController.destroy);
 
 routes.get("/", (req, res) => {
 
-	res.redirect(req.originalUrl + "/show");
+	res.redirect(req.originalUrl + "/index");
 
 })
 
