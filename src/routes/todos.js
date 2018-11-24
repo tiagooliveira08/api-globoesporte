@@ -5,6 +5,7 @@ const todos = require("./../controllers/todosController");
 
 routes.get("/index", todos.index);
 routes.post("/store", todos.store);
+routes.put("/update/:id", todos.update);
 routes.delete("/destroy/:id", todos.destroy);
 
 

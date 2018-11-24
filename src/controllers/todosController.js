@@ -19,6 +19,12 @@ exports.store =  async function(req, res) {
 	res.json(todos);
 }
 
+exports.update = async function(req, res) {
+	let todos = await Todos.findByIdAndUpdate(req.params.id, req.body, { new : true})
+
+	res.json(todos);
+}
+
 exports.destroy = async (req, res) => {
 
 	console.log(req.params.id);
