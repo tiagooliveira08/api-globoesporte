@@ -21,7 +21,8 @@ exports.store =  async function(req, res) {
 
 exports.destroy = async (req, res) => {
 
-	const todos = await Todos.findOneAndDelete(req.params.id);
+	console.log(req.params.id);
 
-	res.send("excluido"); 
+	let todos = await Todos.findByIdAndRemove(req.params.id);
+	res.send(todos); 
 }
